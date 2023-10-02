@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Greeting name={name} greetingMsg={greetingMsg} />
+      <Greeting name={name} greetingMsg={greetingMsg} isLoggedIn={false} />
     </div>
   )
 }
