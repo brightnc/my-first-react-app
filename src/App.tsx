@@ -16,7 +16,6 @@ function App() {
   }
 
   const name: string = 'Bright'
-  const greetingMsg: string = 'Hello'
   const isLoggedIn: boolean = true
   const [loading, setLoading] = useState(false)
   const [posts, setPosts] = useState<PostDTO[]>([])
@@ -29,7 +28,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Greeting name={name} greetingMsg={greetingMsg} isLoggedIn={isLoggedIn} />
+      <Greeting name={name} isLoggedIn={isLoggedIn} />
       <div className="feed-container">
         {loading
           ? posts.map((post) => {
