@@ -1,79 +1,26 @@
-import { FormEvent, useEffect, useState } from 'react'
+import { FormEvent, useState } from 'react'
 import './App.css'
 import Greeting from './components/Greeting'
 import Navbar from './components/Navbar'
 import Post from './components/Post'
-import { CreatePostDTO, PostDTO } from './types/dto'
-import axios from 'axios'
+import usePosts from './hooks/usePosts'
 
 function App() {
-  const [isLoading, setIsLoading] = useState(false)
-  const [posts, setPosts] = useState<PostDTO[] | null>([])
+  const { posts, isLoading, isPending, createPost } = usePosts()
   const [newTitle, setNewTitle] = useState<string>('')
   const [newBody, setNewBody] = useState<string>('')
-  const [isPending, setIsPending] = useState<boolean>(false)
-
-  const name: string = 'Bright'
-  const isLoggedIn: boolean = true
-  const url = 'https://jsonplaceholder.typicode.com/posts'
-
-  // const getPosts = (): Promise<PostDTO[]> => {
-  //   return new Promise((resolve) => {
-  //     setTimeout(() => {
-  //       resolve(postsData)
-  //     }, 1 * 1000)
-  //   })
-  // }
-
-  // useEffect(() => {
-  //   getPosts().then((data) => {
-  //     setLoading(true)
-  //     setPosts(data)
-  //   })
-  // }, [])
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get<PostDTO[]>(url)
-        setPosts(res.data)
-        setIsLoading(true)
-      } catch (error) {
-        console.error(error)
-      }
-    }
-
-    fetchData()
-  }, [])
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    setIsPending(true)
-    if (!posts) return
-
-    const data: CreatePostDTO = {
-      userId: Math.floor(Math.random() * 1000),
-      title: newTitle,
-      body: newBody,
-    }
-
     try {
-      const res = await axios.post<PostDTO>(url, data, {
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        },
-      })
-
-      console.log(res.data)
+      await createPost(newTitle, newBody)
     } catch (error) {
       console.error(error)
-    } finally {
-      setIsPending(false)
     }
-
-    setNewTitle('')
-    setNewBody('')
   }
+
+  const name: string = 'Bright'
+  const isLoggedIn: boolean = true
 
   const handleNewTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => setNewTitle(e.target.value)
   const handleNewBodyChange = (e: React.ChangeEvent<HTMLInputElement>) => setNewBody(e.target.value)
