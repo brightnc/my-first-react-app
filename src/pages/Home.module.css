@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.feedContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  width: 100%;
+}
+
+.postForm {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  height: auto;
+  background-color: #c8c8c8;
+  padding: 10px 8px;
+  border-radius: 6px;
+  gap: 5px;
+}
