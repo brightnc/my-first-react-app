@@ -4,10 +4,3 @@
   align-items: center;
   gap: 30px;
 }
-
-.feed-container {
-  display: flex;
-  flex-direction: column;
-  max-width: 800px;
-  width: 100%;
-}

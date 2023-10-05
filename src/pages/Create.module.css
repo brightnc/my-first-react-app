@@ -1,0 +1,36 @@
+.postForm {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: auto;
+}
+
+.postForm input {
+  border: none;
+  border-radius: 10px;
+  padding: 5px 15px;
+}
+
+.formBtn {
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+.formBtnInactive {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.formBtn:hover {
+  background-color: white;
+  color: black;
+}

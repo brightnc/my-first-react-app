@@ -5,7 +5,7 @@ import { CreatePostDTO, PostDTO } from '../types/dto'
 const usePosts = () => {
   const [posts, setPosts] = useState<PostDTO[] | null>([])
   const [isPending, setIsPending] = useState<boolean>(false)
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const url = 'https://jsonplaceholder.typicode.com/posts'
 
