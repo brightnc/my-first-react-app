@@ -19,7 +19,7 @@ const Create = () => {
   const handleNewBodyChange = (e: React.ChangeEvent<HTMLInputElement>) => setNewBody(e.target.value)
   return (
     <div>
-      <form className={classes.container} onSubmit={handleSubmit}>
+      <form className={classes.postForm} onSubmit={handleSubmit}>
         <label>Title</label>
         <input type="text" value={newTitle} required onChange={handleNewTitleChange} />
         <label>Body</label>
