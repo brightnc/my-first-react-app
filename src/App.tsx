@@ -3,6 +3,7 @@ import './App.css'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Profile from './pages/Profile'
+import Create from './pages/Create'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/create" element={<Create />} />
       </Routes>
     </div>
   )

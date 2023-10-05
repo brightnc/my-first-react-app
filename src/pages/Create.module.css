@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: auto;
+}
+
+.container input {
+  border: none;
+  border-radius: 10px;
+  padding: 5px 15px;
+}
+
+.formBtn {
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.formBtn:hover {
+  background-color: white;
+  color: black;
+}

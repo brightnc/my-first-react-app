@@ -11,6 +11,9 @@ const Navbar = () => {
         </NavLink>
       </div>
       <div className={classes.menu}>
+        <NavLink className={({ isActive }) => (isActive ? classes.active : classes.inactive)} to="/create">
+          Create
+        </NavLink>
         <NavLink className={({ isActive }) => (isActive ? classes.active : classes.inactive)} to="/profile">
           Profile
         </NavLink>
