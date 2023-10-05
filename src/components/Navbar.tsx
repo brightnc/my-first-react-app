@@ -1,7 +1,11 @@
+import { useAuth } from '../providers/AuthProvider'
 import classes from './Navbar.module.css'
 import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
+  const { isLoggedIn } = useAuth()
+
+  console.log('From NavBar : ', isLoggedIn)
   return (
     <div className={classes.nav}>
       <div className={classes.menu}>
