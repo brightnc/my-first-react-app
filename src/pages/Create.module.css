@@ -20,6 +20,15 @@
   cursor: pointer;
   margin-top: 15px;
 }
+.formBtnInactive {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+}
 
 .formBtn:hover {
   background-color: white;

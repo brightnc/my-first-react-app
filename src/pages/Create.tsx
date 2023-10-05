@@ -1,15 +1,22 @@
 import { FormEvent, useState } from 'react'
 import usePosts from '../hooks/usePosts'
 import classes from './Create.module.css'
+import { useNavigate } from 'react-router-dom'
 
 const Create = () => {
   const { isPending, createPost } = usePosts()
   const [newTitle, setNewTitle] = useState<string>('')
   const [newBody, setNewBody] = useState<string>('')
+
+  const navigate = useNavigate()
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     try {
       await createPost(newTitle, newBody)
+
+      setNewBody('')
+      setNewTitle('')
+      navigate('/')
     } catch (error) {
       console.error(error)
     }
@@ -24,7 +31,7 @@ const Create = () => {
         <input type="text" value={newTitle} required onChange={handleNewTitleChange} />
         <label>Body</label>
         <input type="text" value={newBody} required onChange={handleNewBodyChange} />
-        <button className={classes.formBtn} type="submit" disabled={isPending}>
+        <button className={isPending ? classes.formBtnInactive : classes.formBtn} type="submit" disabled={isPending}>
           {isPending ? 'Pending...' : 'Submit'}
         </button>
       </form>
