@@ -33,6 +33,10 @@
   padding: 10px;
   cursor: pointer;
 }
+.loginBtnActive {
+  background-color: green;
+  color: white;
+}
 
 .loginBtn:hover {
   background-color: green;

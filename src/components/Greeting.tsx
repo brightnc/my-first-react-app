@@ -1,15 +1,13 @@
+import { useAuth } from '../providers/AuthProvider'
 import classes from './Greeting.module.css'
 
-interface IGreetingProps {
-  name: string
-  isLoggedIn: boolean
-}
-const Greeting = ({ name, isLoggedIn }: IGreetingProps) => {
+const Greeting = () => {
+  const { username } = useAuth()
   return (
     <>
       <div className={classes.card}>
         <h3>Welcome!</h3>
-        <p>{isLoggedIn ? name : 'Unknown'}</p>
+        <p>{username}</p>
       </div>
     </>
   )
