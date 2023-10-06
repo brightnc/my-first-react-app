@@ -1,8 +1,18 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import classes from './Navbar.module.css'
 import { NavLink } from 'react-router-dom'
+import { useAuth } from '../providers/AuthProvider'
 
 const Navbar = () => {
+  const { isLoggedIn, logout } = useAuth()
+
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    logout()
+    navigate('/')
+  }
+
   return (
     <div className={classes.nav}>
       <div className={classes.menu}>
@@ -12,16 +22,25 @@ const Navbar = () => {
         </NavLink>
       </div>
       <div className={classes.menu}>
-        <NavLink className={({ isActive }) => (isActive ? classes.active : classes.inactive)} to="/create">
-          Create
-        </NavLink>
-        <NavLink className={({ isActive }) => (isActive ? classes.active : classes.inactive)} to="/profile">
-          Profile
-        </NavLink>
-
-        <Link to="/login" className={classes.loginBtn}>
-          Login
-        </Link>
+        {isLoggedIn ? (
+          <>
+            <NavLink className={({ isActive }) => (isActive ? classes.active : classes.inactive)} to="/create">
+              Create
+            </NavLink>
+            <NavLink className={({ isActive }) => (isActive ? classes.active : classes.inactive)} to="/profile">
+              Profile
+            </NavLink>
+            <button onClick={handleLogout} className={classes.loginBtn}>
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <Link to="/login" className={classes.loginBtn}>
+              Login
+            </Link>
+          </>
+        )}
       </div>
     </div>
   )
