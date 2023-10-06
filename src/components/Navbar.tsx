@@ -1,11 +1,8 @@
-import { useAuth } from '../providers/AuthProvider'
+import { Link } from 'react-router-dom'
 import classes from './Navbar.module.css'
 import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
-  const { isLoggedIn } = useAuth()
-
-  console.log('From NavBar : ', isLoggedIn)
   return (
     <div className={classes.nav}>
       <div className={classes.menu}>
@@ -22,9 +19,9 @@ const Navbar = () => {
           Profile
         </NavLink>
 
-        <NavLink className={({ isActive }) => (isActive ? classes.active : classes.inactive)} to="/login">
-          <button className={classes.loginBtn}>Login</button>
-        </NavLink>
+        <Link to="/login" className={classes.loginBtn}>
+          Login
+        </Link>
       </div>
     </div>
   )

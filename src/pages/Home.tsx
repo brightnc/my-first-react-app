@@ -1,13 +1,9 @@
 import usePosts from '../hooks/usePosts'
 import Post from '../components/Post'
 import classes from './Home.module.css'
-import { useAuth } from '../providers/AuthProvider'
 
 const Home = () => {
   const { posts, isLoading } = usePosts()
-  const { isLoggedIn } = useAuth()
-
-  console.log('From Home page : ', isLoggedIn)
 
   return (
     <div className={classes.container}>
