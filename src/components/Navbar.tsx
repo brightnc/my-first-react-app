@@ -21,7 +21,10 @@ const Navbar = () => {
         <NavLink className={({ isActive }) => (isActive ? classes.active : classes.inactive)} to="/profile">
           Profile
         </NavLink>
-        <button className={classes.loginBtn}>Login</button>
+
+        <NavLink className={({ isActive }) => (isActive ? classes.active : classes.inactive)} to="/login">
+          <button className={classes.loginBtn}>Login</button>
+        </NavLink>
       </div>
     </div>
   )
