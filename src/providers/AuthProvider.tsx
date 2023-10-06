@@ -19,8 +19,10 @@ export const useAuth = () => {
   return context
 }
 
+const token = localStorage.getItem('token')
+
 const AuthProvider = ({ children }: IAuthProviderProps) => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true)
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(!!token)
 
   const login = async (username: string, password: string) => {
     const loginBody: LoginDTO = { username, password }
@@ -28,7 +30,8 @@ const AuthProvider = ({ children }: IAuthProviderProps) => {
     try {
       const res = await axios.post<CredentialDTO>(url, loginBody, { headers: { 'Content-Type': 'application/json' } })
 
-      console.log(res.data)
+      localStorage.setItem('token', res.data.accessToken)
+      setIsLoggedIn(true)
     } catch (error) {
       throw new Error('Invalid username or password !')
     }
